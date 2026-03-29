@@ -129,7 +129,7 @@ def parse_model_action(response_text: str) -> Dict[str, Any]:
             except json.JSONDecodeError:
                 pass
         
-        print(f"  ⚠ Failed to parse LLM response:\n{content}")
+        print(f"  ⚠ Failed to parse LLM response: {content[:100]}...")
         return {"decision": "unknown", "reasoning": content, "confidence": 0.0}
 
 
@@ -206,7 +206,7 @@ def main() -> None:
                 total_reward += reward
                 steps += 1
                 
-                feedback = info.get('feedback', '') if isinstance(info, dict) else ""
+                feedback = info.get('feedback', '')[:60] if isinstance(info, dict) else ""
                 print(f"  Step {steps}: reward={reward:+.3f} | {feedback}")
 
                 if done:
