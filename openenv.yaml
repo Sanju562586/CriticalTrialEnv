@@ -1,0 +1,20 @@
+name: clinical_trial_env
+version: "1.0.0"
+description: >
+  AI agent environment for clinical research coordination tasks.
+  Simulates patient eligibility screening, adverse event triage,
+  and protocol deviation assessment — grounded in FDA 21 CFR 312.32
+  and ICH E6 GCP guidelines.
+
+tasks:
+  - id: eligibility_screening
+    description: Screen patient records against trial inclusion/exclusion criteria
+    difficulty: easy
+
+  - id: adverse_event_triage
+    description: Rank adverse event reports by FDA reporting urgency
+    difficulty: medium
+
+  - id: deviation_assessment
+    description: Classify and respond to protocol deviations per ICH E6 GCP
+    difficulty: hard

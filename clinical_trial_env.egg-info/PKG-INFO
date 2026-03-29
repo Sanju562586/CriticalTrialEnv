@@ -1,0 +1,113 @@
+Metadata-Version: 2.4
+Name: clinical-trial-env
+Version: 1.0.0
+Summary: AI Agent Environment for Clinical Research Coordination
+License: MIT
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: openenv-core>=0.2.0
+Requires-Dist: fastapi>=0.100.0
+Requires-Dist: uvicorn[standard]>=0.23.0
+Requires-Dist: pydantic>=2.0.0
+Requires-Dist: python-dotenv>=1.0.0
+Requires-Dist: openai>=1.0.0
+Requires-Dist: requests>=2.28.0
+Provides-Extra: datagen
+Requires-Dist: google-generativeai>=0.4.0; extra == "datagen"
+Provides-Extra: dev
+Requires-Dist: pytest>=7.0.0; extra == "dev"
+Requires-Dist: httpx>=0.24.0; extra == "dev"
+
+---
+title: ClinicalTrialEnv
+emoji: 🏥
+colorFrom: blue
+colorTo: teal
+sdk: docker
+app_port: 7860
+---
+
+# 🏥 ClinicalTrialEnv
+
+**AI Agent Environment for Clinical Research Coordination**
+
+An OpenEnv-compatible reinforcement learning environment that simulates three core clinical research coordination tasks, grounded in **FDA 21 CFR 312.32** and **ICH E6 GCP** regulatory frameworks.
+
+## 🎯 Tasks
+
+| Task | Difficulty | Description |
+|------|-----------|-------------|
+| `eligibility_screening` | 🟢 Easy | Screen patient records against trial inclusion/exclusion criteria |
+| `adverse_event_triage` | 🟡 Medium | Rank adverse event reports by FDA reporting urgency (IND Safety Reports) |
+| `deviation_assessment` | 🔴 Hard | Classify and respond to protocol deviations per ICH E6 GCP guidelines |
+
+## 🏗️ Architecture
+
+```
+ClinicalTrialEnv/
+├── openenv.yaml              # Environment manifest
+├── inference.py              # Agent inference script (root level)
+├── clinical_trial_env/       # Client package
+│   ├── client.py             # HTTPEnvClient wrapper
+│   └── models.py             # Typed Action/Observation/State models
+├── server/
+│   ├── app.py                # FastAPI app (WebSocket + REST)
+│   ├── environment.py        # Core environment logic
+│   └── graders/              # Task-specific grading functions
+├── data/                     # Pre-baked clinical datasets
+├── scripts/                  # Data generation utilities
+└── Dockerfile                # HF Spaces deployment
+```
+
+## 🚀 Quick Start
+
+### 1. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 2. Start the Server
+
+```bash
+uvicorn server.app:app --host 0.0.0.0 --port 7860
+```
+
+### 3. Run the Agent
+
+```bash
+# Set environment variables
+export HF_TOKEN=hf_your_token_here
+export API_BASE_URL=https://router.huggingface.co/v1
+export MODEL_NAME=meta-llama/Llama-3.3-70B-Instruct
+
+python inference.py
+```
+
+## 📊 Grading
+
+All graders return scores in `[0.0, 1.0]`:
+
+- **Eligibility Screening**: Correct inclusion/exclusion decisions with reasoning quality
+- **Adverse Event Triage**: Accuracy of urgency classification and FDA reporting timeline
+- **Deviation Assessment**: Correct classification severity + appropriate corrective action
+
+## 🔧 Environment Variables
+
+| Variable | Description | Source |
+|----------|-------------|--------|
+| `HF_TOKEN` | HuggingFace API token | [huggingface.co/settings/tokens](https://huggingface.co/settings/tokens) |
+| `API_BASE_URL` | Inference API endpoint | `https://router.huggingface.co/v1` |
+| `MODEL_NAME` | LLM model identifier | `meta-llama/Llama-3.3-70B-Instruct` |
+| `GEMINI_API_KEY` | Google Gemini key (data gen only) | [aistudio.google.com](https://aistudio.google.com) |
+
+## 📋 Regulatory Grounding
+
+- **FDA 21 CFR 312.32** — IND Safety Reporting requirements
+- **ICH E6(R2) GCP** — Good Clinical Practice guidelines
+- **ICH E2A/E2B** — Clinical safety data management standards
+- **CTCAE v5.0** — Common Terminology Criteria for Adverse Events
+
+## 📄 License
+
+MIT

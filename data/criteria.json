@@ -1,0 +1,22 @@
+{
+  "trial_name": "CARDIO-SHIELD Phase III",
+  "protocol_id": "CS-2024-0312",
+  "indication": "Chronic Heart Failure with Reduced Ejection Fraction (HFrEF)",
+  "inclusion_criteria": [
+    {"id": "INC-01", "description": "Age 18-80 years", "field": "age", "operator": "between", "value": [18, 80]},
+    {"id": "INC-02", "description": "NYHA Class II-IV for >= 3 months", "field": "nyha_class", "operator": "in", "value": ["II", "III", "IV"]},
+    {"id": "INC-03", "description": "LVEF <= 40%", "field": "lvef_percent", "operator": "lte", "value": 40},
+    {"id": "INC-04", "description": "Stable GDMT >= 4 weeks", "field": "stable_gdmt_weeks", "operator": "gte", "value": 4},
+    {"id": "INC-05", "description": "NT-proBNP >= 400 pg/mL", "field": "nt_probnp", "operator": "gte", "value": 400}
+  ],
+  "exclusion_criteria": [
+    {"id": "EXC-01", "description": "eGFR < 20 mL/min/1.73m2", "field": "egfr", "operator": "lt", "value": 20},
+    {"id": "EXC-02", "description": "Potassium > 5.5 mEq/L", "field": "potassium", "operator": "gt", "value": 5.5},
+    {"id": "EXC-03", "description": "Cardiac event within 90 days", "field": "days_since_cardiac_event", "operator": "lt", "value": 90},
+    {"id": "EXC-04", "description": "Active malignancy", "field": "active_malignancy", "operator": "eq", "value": true},
+    {"id": "EXC-05", "description": "Pregnancy risk", "field": "pregnancy_risk", "operator": "eq", "value": true},
+    {"id": "EXC-06", "description": "Drug allergy", "field": "drug_allergy", "operator": "eq", "value": true},
+    {"id": "EXC-07", "description": "SBP < 90 mmHg", "field": "systolic_bp", "operator": "lt", "value": 90},
+    {"id": "EXC-08", "description": "Hemoglobin < 9.0 g/dL", "field": "hemoglobin", "operator": "lt", "value": 9.0}
+  ]
+}
