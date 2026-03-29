@@ -206,7 +206,7 @@ def main() -> None:
                 total_reward += reward
                 steps += 1
                 
-                feedback = info.get('feedback', '')[:60] if isinstance(info, dict) else ""
+                feedback = info.get('feedback', '')[:100] if isinstance(info, dict) else ""
                 print(f"  Step {steps}: reward={reward:+.3f} | {feedback}")
 
                 if done:
