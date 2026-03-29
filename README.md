@@ -1,12 +1,3 @@
----
-title: ClinicalTrialEnv
-emoji: 🏥
-colorFrom: blue
-colorTo: teal
-sdk: docker
-app_port: 7860
----
-
 # 🏥 ClinicalTrialEnv
 
 **AI Agent Environment for Clinical Research Coordination**
