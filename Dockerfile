@@ -1,27 +1,46 @@
-# Must build FROM openenv-base, not FROM python:3.11-slim
+# Multi-stage build using openenv-base (matches official OpenEnv pattern)
+# Reference: github.com/meta-pytorch/OpenEnv/envs/echo_env/server/Dockerfile
+
 ARG BASE_IMAGE=ghcr.io/meta-pytorch/openenv-base:latest
+FROM ${BASE_IMAGE} AS builder
+
+WORKDIR /app
+
+ARG BUILD_MODE=standalone
+
+# Copy environment code
+COPY . /app/env
+
+WORKDIR /app/env
+
+# Ensure uv is available
+RUN if ! command -v uv > /dev/null 2>&1; then \
+        curl -LsSf https://astral.sh/uv/install.sh | sh && \
+        mv /root/.local/bin/uv /usr/local/bin/uv && \
+        mv /root/.local/bin/uvx /usr/local/bin/uvx; \
+    fi
+
+# Install dependencies using uv sync (no lockfile - generate fresh)
+RUN --mount=type=cache,target=/root/.cache/uv \
+    uv sync --no-install-project --no-editable
+
+RUN --mount=type=cache,target=/root/.cache/uv \
+    uv sync --no-editable
+
+# --- Runtime stage ---
 FROM ${BASE_IMAGE}
 
 WORKDIR /app
 
-# Install CPU-only PyTorch FIRST (prevents the 2GB GPU wheel being pulled
-# later by pip when it sees torch>=2.0.0 in requirements)
-RUN pip install --no-cache-dir \
-    "torch==2.2.2" \
-    --index-url https://download.pytorch.org/whl/cpu
+# Copy the virtual environment and code from builder
+COPY --from=builder /app/env/.venv /app/.venv
+COPY --from=builder /app/env /app/env
 
-# Copy and install remaining dependencies (torch is already satisfied above)
-COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
+# Use venv Python
+ENV PATH="/app/.venv/bin:$PATH"
+ENV PYTHONPATH="/app/env:$PYTHONPATH"
 
-# Copy the entire project
-COPY . .
-
-# Install the local package (no deps, they're already installed)
-RUN pip install --no-cache-dir -e . --no-deps
-
-# Expose the HF Spaces default port
 EXPOSE 7860
 
-# Start the FastAPI server
-CMD ["uvicorn", "server.app:app", "--host", "0.0.0.0", "--port", "7860"]
+# Start the FastAPI server on port 7860 (HF Spaces requirement)
+CMD ["sh", "-c", "cd /app/env && uvicorn server.app:app --host 0.0.0.0 --port 7860"]

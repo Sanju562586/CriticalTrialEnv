@@ -25,5 +25,4 @@ clinical_trial_env.egg-info/
 dist/
 build/
 
-# uv lock file (pin versions locally, not needed by evaluators)
-uv.lock
+# uv.lock is committed for reproducible Docker builds (openenv-base uv sync --frozen)
