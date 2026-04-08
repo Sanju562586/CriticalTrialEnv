@@ -27,11 +27,12 @@ from clinical_trial_env.client import ClinicalTrialEnv
 load_dotenv()
 
 # ── Config ────────────────────────────────────────────────────────────────────
-API_BASE_URL = os.getenv("API_BASE_URL", "https://router.huggingface.co/v1")
-MODEL_NAME   = os.getenv("MODEL_NAME",   "meta-llama/Llama-3.3-70B-Instruct")
-HF_TOKEN     = os.getenv("HF_TOKEN",     "ollama")
-ENV_BASE_URL = os.getenv("ENV_BASE_URL", "http://localhost:7860")
-BENCHMARK    = "ClinicalTrialEnv"
+API_BASE_URL      = os.getenv("API_BASE_URL", "https://router.huggingface.co/v1")
+MODEL_NAME        = os.getenv("MODEL_NAME",   "meta-llama/Llama-3.3-70B-Instruct")
+HF_TOKEN          = os.getenv("HF_TOKEN")          # NO default — must be set explicitly
+LOCAL_IMAGE_NAME  = os.getenv("LOCAL_IMAGE_NAME")  # Optional: used with from_docker_image()
+ENV_BASE_URL      = os.getenv("ENV_BASE_URL", "http://localhost:7860")
+BENCHMARK         = "ClinicalTrialEnv"
 
 MAX_TOKENS  = 1200          # Raised from 800 — prevents truncation of complex rationales
 TEMPERATURE = 0.1           # Lowered from 0.2 — more deterministic, fewer format errors
@@ -39,7 +40,7 @@ MAX_RETRIES = 3
 TASKS       = ["eligibility_screening", "adverse_event_triage", "deviation_assessment"]
 SUCCESS_THRESHOLD = 0.85   # Acceptable limit
 
-client = OpenAI(base_url=API_BASE_URL, api_key=HF_TOKEN)
+client = OpenAI(base_url=API_BASE_URL, api_key=HF_TOKEN or "")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
