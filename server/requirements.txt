@@ -1,3 +1,5 @@
+# torch is installed separately in Dockerfile with CPU-only wheel
+# to avoid pulling the 2GB GPU wheel
 openenv-core>=0.5.0
 fastapi>=0.100.0
 uvicorn[standard]>=0.23.0

@@ -4,18 +4,20 @@ FROM ${BASE_IMAGE}
 
 WORKDIR /app
 
-# Install CPU-only PyTorch first (avoids 2GB GPU wheel download on HF Spaces)
+# Install CPU-only PyTorch FIRST (prevents the 2GB GPU wheel being pulled
+# later by pip when it sees torch>=2.0.0 in requirements)
 RUN pip install --no-cache-dir \
-    torch --index-url https://download.pytorch.org/whl/cpu
+    "torch==2.2.2" \
+    --index-url https://download.pytorch.org/whl/cpu
 
-# Copy dependency files and install all project deps
-COPY pyproject.toml requirements.txt ./
+# Copy and install remaining dependencies (torch is already satisfied above)
+COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the entire project
 COPY . .
 
-# Install the local package in editable mode
+# Install the local package (no deps, they're already installed)
 RUN pip install --no-cache-dir -e . --no-deps
 
 # Expose the HF Spaces default port

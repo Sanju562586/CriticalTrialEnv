@@ -1,5 +1,9 @@
+# torch is installed separately in Dockerfile with CPU-only wheel
+# to avoid pulling the 2GB GPU wheel
 openenv-core>=0.5.0
-openai>=1.0.0
-python-dotenv>=1.0.0
+fastapi>=0.100.0
+uvicorn[standard]>=0.23.0
 pydantic>=2.0.0
-torch>=2.0.0
+python-dotenv>=1.0.0
+openai>=1.0.0
+requests>=2.28.0
