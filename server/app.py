@@ -14,8 +14,9 @@ import json
 import dataclasses
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI, WebSocket, WebSocketDisconnect
+from fastapi import FastAPI, WebSocket, WebSocketDisconnect, Body, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from typing import Optional
 
@@ -89,10 +90,18 @@ async def get_tasks():
 
 
 @app.post("/reset")
-async def reset(request: Optional[ResetRequest] = None):
-    if request is None:
-        request = ResetRequest()
-    result = env.reset(task=request.task)
+async def reset(raw: Request):
+    """Reset the environment. Accepts optional JSON body {"task": "..."}.
+    Handles null body, empty body, or missing body gracefully.
+    """
+    task = "eligibility_screening"  # default
+    try:
+        body = await raw.json()
+        if isinstance(body, dict):
+            task = body.get("task", task)
+    except Exception:
+        pass  # no body or non-JSON body — use default task
+    result = env.reset(task=task)
     return {
         "observation": _to_dict(result.observation),
         "info": result.info,
@@ -100,11 +109,21 @@ async def reset(request: Optional[ResetRequest] = None):
 
 
 @app.post("/step")
-async def step(request: Optional[ActionRequest] = None):
-    if request is None:
-        request = ActionRequest()
-    action_dict = request.model_dump()
-    result = env.step(action_dict)
+async def step(raw: Request):
+    """Submit an action. Accepts optional JSON body with action fields.
+    Handles null body, empty body, or missing body gracefully.
+    """
+    action_dict = {}
+    try:
+        body = await raw.json()
+        if isinstance(body, dict):
+            action_dict = body
+    except Exception:
+        pass  # no body — use empty action
+    # Fill defaults for any missing keys
+    defaults = ActionRequest().model_dump()
+    defaults.update(action_dict)
+    result = env.step(defaults)
     return {
         "observation": _to_dict(result.observation),
         "reward": result.reward,
