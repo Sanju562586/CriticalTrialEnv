@@ -1,22 +1,1459 @@
 [
-  {"id":"P001","name":"John Martinez","age":67,"sex":"M","nyha_class":"III","lvef_percent":28,"stable_gdmt_weeks":8,"nt_probnp":1250,"egfr":45,"potassium":4.2,"days_since_cardiac_event":200,"active_malignancy":false,"pregnancy_risk":false,"drug_allergy":false,"systolic_bp":118,"hemoglobin":13.1,"comorbidities":["type_2_diabetes","hypertension","CKD_stage_3a"],"medications":["sacubitril_valsartan","carvedilol","dapagliflozin","furosemide"],"eligible":true,"notes":"Meets all inclusion, no exclusions"},
-  {"id":"P002","name":"Sarah Chen","age":52,"sex":"F","nyha_class":"II","lvef_percent":35,"stable_gdmt_weeks":12,"nt_probnp":620,"egfr":72,"potassium":4.5,"days_since_cardiac_event":400,"active_malignancy":false,"pregnancy_risk":false,"drug_allergy":false,"systolic_bp":125,"hemoglobin":12.4,"comorbidities":["hypertension"],"medications":["enalapril","metoprolol","spironolactone"],"eligible":true,"notes":"Meets all criteria"},
-  {"id":"P003","name":"Robert Williams","age":84,"sex":"M","nyha_class":"IV","lvef_percent":18,"stable_gdmt_weeks":6,"nt_probnp":4200,"egfr":32,"potassium":5.1,"days_since_cardiac_event":365,"active_malignancy":false,"pregnancy_risk":false,"drug_allergy":false,"systolic_bp":95,"hemoglobin":10.2,"comorbidities":["atrial_fibrillation","CKD_stage_3b","COPD"],"medications":["sacubitril_valsartan","bisoprolol","apixaban"],"eligible":false,"notes":"Excluded: age > 80 (INC-01 fail)"},
-  {"id":"P004","name":"Maria Garcia","age":45,"sex":"F","nyha_class":"II","lvef_percent":38,"stable_gdmt_weeks":10,"nt_probnp":510,"egfr":88,"potassium":3.9,"days_since_cardiac_event":500,"active_malignancy":false,"pregnancy_risk":true,"drug_allergy":false,"systolic_bp":130,"hemoglobin":11.8,"comorbidities":["hypertension"],"medications":["losartan","metoprolol"],"eligible":false,"notes":"Excluded: pregnancy risk (EXC-05)"},
-  {"id":"P005","name":"James Thompson","age":71,"sex":"M","nyha_class":"III","lvef_percent":25,"stable_gdmt_weeks":2,"nt_probnp":1800,"egfr":38,"potassium":4.8,"days_since_cardiac_event":180,"active_malignancy":false,"pregnancy_risk":false,"drug_allergy":false,"systolic_bp":108,"hemoglobin":11.5,"comorbidities":["type_2_diabetes","CKD_stage_3b"],"medications":["sacubitril_valsartan","carvedilol","empagliflozin"],"eligible":false,"notes":"Excluded: stable GDMT < 4 weeks (INC-04 fail)"},
-  {"id":"P006","name":"Linda Davis","age":63,"sex":"F","nyha_class":"III","lvef_percent":32,"stable_gdmt_weeks":6,"nt_probnp":890,"egfr":55,"potassium":4.3,"days_since_cardiac_event":300,"active_malignancy":false,"pregnancy_risk":false,"drug_allergy":false,"systolic_bp":115,"hemoglobin":12.0,"comorbidities":["hypertension","hypothyroidism"],"medications":["sacubitril_valsartan","metoprolol","levothyroxine"],"eligible":true,"notes":"Meets all criteria"},
-  {"id":"P007","name":"Michael Brown","age":58,"sex":"M","nyha_class":"II","lvef_percent":40,"stable_gdmt_weeks":8,"nt_probnp":450,"egfr":65,"potassium":5.8,"days_since_cardiac_event":250,"active_malignancy":false,"pregnancy_risk":false,"drug_allergy":false,"systolic_bp":122,"hemoglobin":14.2,"comorbidities":["hypertension","gout"],"medications":["enalapril","bisoprolol","allopurinol"],"eligible":false,"notes":"Excluded: potassium > 5.5 (EXC-02)"},
-  {"id":"P008","name":"Patricia Wilson","age":76,"sex":"F","nyha_class":"IV","lvef_percent":20,"stable_gdmt_weeks":16,"nt_probnp":3500,"egfr":15,"potassium":5.2,"days_since_cardiac_event":400,"active_malignancy":false,"pregnancy_risk":false,"drug_allergy":false,"systolic_bp":100,"hemoglobin":9.5,"comorbidities":["CKD_stage_4","anemia","atrial_fibrillation"],"medications":["sacubitril_valsartan","carvedilol","warfarin"],"eligible":false,"notes":"Excluded: eGFR < 20 (EXC-01)"},
-  {"id":"P009","name":"David Lee","age":49,"sex":"M","nyha_class":"II","lvef_percent":36,"stable_gdmt_weeks":6,"nt_probnp":480,"egfr":92,"potassium":4.0,"days_since_cardiac_event":600,"active_malignancy":false,"pregnancy_risk":false,"drug_allergy":false,"systolic_bp":128,"hemoglobin":15.0,"comorbidities":["hypertension","obesity"],"medications":["losartan","metoprolol","dapagliflozin"],"eligible":true,"notes":"Meets all criteria"},
-  {"id":"P010","name":"Jennifer Taylor","age":55,"sex":"F","nyha_class":"III","lvef_percent":30,"stable_gdmt_weeks":10,"nt_probnp":1100,"egfr":48,"potassium":4.6,"days_since_cardiac_event":60,"active_malignancy":false,"pregnancy_risk":false,"drug_allergy":false,"systolic_bp":112,"hemoglobin":11.2,"comorbidities":["type_2_diabetes","CKD_stage_3a"],"medications":["sacubitril_valsartan","carvedilol","insulin"],"eligible":false,"notes":"Excluded: cardiac event within 90 days (EXC-03)"},
-  {"id":"P011","name":"Thomas Anderson","age":62,"sex":"M","nyha_class":"II","lvef_percent":38,"stable_gdmt_weeks":20,"nt_probnp":550,"egfr":70,"potassium":4.1,"days_since_cardiac_event":500,"active_malignancy":false,"pregnancy_risk":false,"drug_allergy":true,"systolic_bp":120,"hemoglobin":13.8,"comorbidities":["hypertension"],"medications":["enalapril","metoprolol"],"eligible":false,"notes":"Excluded: drug_allergy (EXC-06)"},
-  {"id":"P012","name":"Nancy White","age":69,"sex":"F","nyha_class":"III","lvef_percent":22,"stable_gdmt_weeks":14,"nt_probnp":2200,"egfr":42,"potassium":4.4,"days_since_cardiac_event":200,"active_malignancy":false,"pregnancy_risk":false,"drug_allergy":false,"systolic_bp":85,"hemoglobin":10.8,"comorbidities":["CKD_stage_3a","anemia"],"medications":["sacubitril_valsartan","bisoprolol","erythropoietin"],"eligible":false,"notes":"Excluded: SBP < 90 (EXC-07)"},
-  {"id":"P013","name":"Christopher Harris","age":73,"sex":"M","nyha_class":"III","lvef_percent":27,"stable_gdmt_weeks":8,"nt_probnp":1600,"egfr":50,"potassium":4.7,"days_since_cardiac_event":365,"active_malignancy":true,"pregnancy_risk":false,"drug_allergy":false,"systolic_bp":110,"hemoglobin":12.5,"comorbidities":["lung_cancer_stage_II","hypertension"],"medications":["sacubitril_valsartan","carvedilol","cisplatin"],"eligible":false,"notes":"Excluded: active malignancy (EXC-04)"},
-  {"id":"P014","name":"Karen Clark","age":60,"sex":"F","nyha_class":"II","lvef_percent":39,"stable_gdmt_weeks":12,"nt_probnp":420,"egfr":80,"potassium":4.0,"days_since_cardiac_event":700,"active_malignancy":false,"pregnancy_risk":false,"drug_allergy":false,"systolic_bp":126,"hemoglobin":12.6,"comorbidities":["hypertension","osteoporosis"],"medications":["losartan","metoprolol","alendronate"],"eligible":true,"notes":"Meets all criteria"},
-  {"id":"P015","name":"Daniel Robinson","age":78,"sex":"M","nyha_class":"IV","lvef_percent":15,"stable_gdmt_weeks":24,"nt_probnp":5000,"egfr":28,"potassium":5.0,"days_since_cardiac_event":150,"active_malignancy":false,"pregnancy_risk":false,"drug_allergy":false,"systolic_bp":92,"hemoglobin":8.5,"comorbidities":["CKD_stage_4","severe_anemia","atrial_fibrillation"],"medications":["sacubitril_valsartan","carvedilol","apixaban","epoetin"],"eligible":false,"notes":"Excluded: hemoglobin < 9.0 (EXC-08)"},
-  {"id":"P016","name":"Lisa Walker","age":56,"sex":"F","nyha_class":"II","lvef_percent":34,"stable_gdmt_weeks":6,"nt_probnp":580,"egfr":76,"potassium":3.8,"days_since_cardiac_event":450,"active_malignancy":false,"pregnancy_risk":false,"drug_allergy":false,"systolic_bp":132,"hemoglobin":13.2,"comorbidities":["hypertension","depression"],"medications":["enalapril","bisoprolol","sertraline"],"eligible":true,"notes":"Meets all criteria"},
-  {"id":"P017","name":"Mark Young","age":65,"sex":"M","nyha_class":"III","lvef_percent":26,"stable_gdmt_weeks":10,"nt_probnp":1400,"egfr":44,"potassium":4.5,"days_since_cardiac_event":300,"active_malignancy":false,"pregnancy_risk":false,"drug_allergy":false,"systolic_bp":105,"hemoglobin":11.8,"comorbidities":["type_2_diabetes","CKD_stage_3a","PAD"],"medications":["sacubitril_valsartan","carvedilol","metformin","clopidogrel"],"eligible":true,"notes":"Meets all criteria"},
-  {"id":"P018","name":"Betty King","age":42,"sex":"F","nyha_class":"II","lvef_percent":45,"stable_gdmt_weeks":8,"nt_probnp":320,"egfr":95,"potassium":4.2,"days_since_cardiac_event":800,"active_malignancy":false,"pregnancy_risk":false,"drug_allergy":false,"systolic_bp":118,"hemoglobin":13.5,"comorbidities":[],"medications":["enalapril","metoprolol"],"eligible":false,"notes":"Excluded: LVEF > 40% (INC-03 fail)"},
-  {"id":"P019","name":"Steven Wright","age":70,"sex":"M","nyha_class":"I","lvef_percent":30,"stable_gdmt_weeks":12,"nt_probnp":200,"egfr":58,"potassium":4.3,"days_since_cardiac_event":500,"active_malignancy":false,"pregnancy_risk":false,"drug_allergy":false,"systolic_bp":135,"hemoglobin":14.0,"comorbidities":["hypertension"],"medications":["losartan","metoprolol"],"eligible":false,"notes":"Excluded: NYHA Class I (INC-02 fail) and NT-proBNP < 400 (INC-05 fail)"},
-  {"id":"P020","name":"Dorothy Hill","age":68,"sex":"F","nyha_class":"III","lvef_percent":33,"stable_gdmt_weeks":8,"nt_probnp":950,"egfr":52,"potassium":4.6,"days_since_cardiac_event":250,"active_malignancy":false,"pregnancy_risk":false,"drug_allergy":false,"systolic_bp":114,"hemoglobin":11.5,"comorbidities":["type_2_diabetes","hypertension"],"medications":["sacubitril_valsartan","bisoprolol","metformin","dapagliflozin"],"eligible":true,"notes":"Meets all criteria"}
+  {
+    "id": "P021",
+    "name": "Victor Kennedy",
+    "age": 82,
+    "sex": "M",
+    "nyha_class": "I",
+    "lvef_percent": 17,
+    "stable_gdmt_weeks": 29,
+    "nt_probnp": 3053,
+    "egfr": 120,
+    "potassium": 6.4,
+    "days_since_cardiac_event": 831,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": true,
+    "systolic_bp": 142,
+    "hemoglobin": 16.0,
+    "comorbidities": [
+      "CKD_stage_3a"
+    ],
+    "medications": [
+      "losartan",
+      "carvedilol",
+      "dapagliflozin",
+      "furosemide"
+    ],
+    "eligible": false,
+    "notes": "Excluded: INC-01 fail: age out of range; INC-02 fail: NYHA Class I; EXC-02: potassium > 5.5; EXC-06: drug allergy"
+  },
+  {
+    "id": "P022",
+    "name": "Raymond Young",
+    "age": 36,
+    "sex": "M",
+    "nyha_class": "II",
+    "lvef_percent": 52,
+    "stable_gdmt_weeks": 15,
+    "nt_probnp": 4583,
+    "egfr": 29,
+    "potassium": 3.9,
+    "days_since_cardiac_event": 898,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": false,
+    "systolic_bp": 139,
+    "hemoglobin": 14.2,
+    "comorbidities": [
+      "type_2_diabetes",
+      "CKD_stage_3a"
+    ],
+    "medications": [
+      "enalapril",
+      "carvedilol",
+      "eplerenone"
+    ],
+    "eligible": false,
+    "notes": "Excluded: INC-03 fail: LVEF > 40%"
+  },
+  {
+    "id": "P023",
+    "name": "Louise Owens",
+    "age": 86,
+    "sex": "F",
+    "nyha_class": "IV",
+    "lvef_percent": 17,
+    "stable_gdmt_weeks": 7,
+    "nt_probnp": 1920,
+    "egfr": 16,
+    "potassium": 4.2,
+    "days_since_cardiac_event": 607,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": true,
+    "systolic_bp": 160,
+    "hemoglobin": 13.0,
+    "comorbidities": [
+      "PAD"
+    ],
+    "medications": [
+      "enalapril",
+      "metoprolol",
+      "spironolactone"
+    ],
+    "eligible": false,
+    "notes": "Excluded: INC-01 fail: age out of range; EXC-01: eGFR < 20; EXC-06: drug allergy"
+  },
+  {
+    "id": "P024",
+    "name": "Kenneth Carroll",
+    "age": 85,
+    "sex": "M",
+    "nyha_class": "II",
+    "lvef_percent": 27,
+    "stable_gdmt_weeks": 21,
+    "nt_probnp": 4056,
+    "egfr": 35,
+    "potassium": 4.9,
+    "days_since_cardiac_event": 745,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": false,
+    "systolic_bp": 130,
+    "hemoglobin": 9.3,
+    "comorbidities": [],
+    "medications": [
+      "valsartan",
+      "metoprolol",
+      "spironolactone"
+    ],
+    "eligible": false,
+    "notes": "Excluded: INC-01 fail: age out of range"
+  },
+  {
+    "id": "P025",
+    "name": "Dennis Dixon",
+    "age": 75,
+    "sex": "M",
+    "nyha_class": "III",
+    "lvef_percent": 37,
+    "stable_gdmt_weeks": 13,
+    "nt_probnp": 3905,
+    "egfr": 118,
+    "potassium": 5.6,
+    "days_since_cardiac_event": 694,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": false,
+    "systolic_bp": 77,
+    "hemoglobin": 10.8,
+    "comorbidities": [
+      "hypertension",
+      "gout"
+    ],
+    "medications": [
+      "enalapril",
+      "metoprolol",
+      "spironolactone"
+    ],
+    "eligible": false,
+    "notes": "Excluded: EXC-02: potassium > 5.5; EXC-07: SBP < 90"
+  },
+  {
+    "id": "P026",
+    "name": "Gerald Graham",
+    "age": 88,
+    "sex": "M",
+    "nyha_class": "IV",
+    "lvef_percent": 18,
+    "stable_gdmt_weeks": 13,
+    "nt_probnp": 1583,
+    "egfr": 43,
+    "potassium": 4.6,
+    "days_since_cardiac_event": 900,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": false,
+    "systolic_bp": 180,
+    "hemoglobin": 15.1,
+    "comorbidities": [
+      "atrial_fibrillation"
+    ],
+    "medications": [
+      "sacubitril_valsartan",
+      "carvedilol",
+      "dapagliflozin",
+      "furosemide"
+    ],
+    "eligible": false,
+    "notes": "Excluded: INC-01 fail: age out of range"
+  },
+  {
+    "id": "P027",
+    "name": "Calvin Drake",
+    "age": 50,
+    "sex": "M",
+    "nyha_class": "II",
+    "lvef_percent": 36,
+    "stable_gdmt_weeks": 15,
+    "nt_probnp": 4023,
+    "egfr": 35,
+    "potassium": 6.0,
+    "days_since_cardiac_event": 929,
+    "active_malignancy": true,
+    "pregnancy_risk": false,
+    "drug_allergy": false,
+    "systolic_bp": 119,
+    "hemoglobin": 9.5,
+    "comorbidities": [
+      "type_2_diabetes",
+      "PAD",
+      "hypertension"
+    ],
+    "medications": [
+      "enalapril",
+      "carvedilol",
+      "eplerenone"
+    ],
+    "eligible": false,
+    "notes": "Excluded: EXC-02: potassium > 5.5; EXC-04: active malignancy"
+  },
+  {
+    "id": "P028",
+    "name": "Sandra Vargas",
+    "age": 82,
+    "sex": "F",
+    "nyha_class": "II",
+    "lvef_percent": 22,
+    "stable_gdmt_weeks": 9,
+    "nt_probnp": 1863,
+    "egfr": 15,
+    "potassium": 5.0,
+    "days_since_cardiac_event": 560,
+    "active_malignancy": true,
+    "pregnancy_risk": false,
+    "drug_allergy": true,
+    "systolic_bp": 131,
+    "hemoglobin": 11.8,
+    "comorbidities": [
+      "atrial_fibrillation",
+      "CKD_stage_3a"
+    ],
+    "medications": [
+      "losartan",
+      "bisoprolol",
+      "dapagliflozin"
+    ],
+    "eligible": false,
+    "notes": "Excluded: INC-01 fail: age out of range; EXC-01: eGFR < 20; EXC-04: active malignancy; EXC-06: drug allergy"
+  },
+  {
+    "id": "P029",
+    "name": "Quentin Carroll",
+    "age": 43,
+    "sex": "M",
+    "nyha_class": "I",
+    "lvef_percent": 48,
+    "stable_gdmt_weeks": 2,
+    "nt_probnp": 5611,
+    "egfr": 118,
+    "potassium": 3.8,
+    "days_since_cardiac_event": 127,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": false,
+    "systolic_bp": 144,
+    "hemoglobin": 12.6,
+    "comorbidities": [
+      "type_2_diabetes",
+      "obesity",
+      "sleep_apnea"
+    ],
+    "medications": [
+      "enalapril",
+      "metoprolol",
+      "spironolactone"
+    ],
+    "eligible": false,
+    "notes": "Excluded: INC-02 fail: NYHA Class I; INC-03 fail: LVEF > 40%; INC-04 fail: stable GDMT < 4 weeks"
+  },
+  {
+    "id": "P030",
+    "name": "Teresa Stewart",
+    "age": 86,
+    "sex": "F",
+    "nyha_class": "III",
+    "lvef_percent": 26,
+    "stable_gdmt_weeks": 6,
+    "nt_probnp": 5566,
+    "egfr": 99,
+    "potassium": 4.1,
+    "days_since_cardiac_event": 276,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": false,
+    "systolic_bp": 110,
+    "hemoglobin": 15.8,
+    "comorbidities": [
+      "CKD_stage_3a"
+    ],
+    "medications": [
+      "sacubitril_valsartan",
+      "carvedilol",
+      "dapagliflozin",
+      "furosemide"
+    ],
+    "eligible": false,
+    "notes": "Excluded: INC-01 fail: age out of range"
+  },
+  {
+    "id": "P031",
+    "name": "Vivian Stewart",
+    "age": 32,
+    "sex": "F",
+    "nyha_class": "I",
+    "lvef_percent": 44,
+    "stable_gdmt_weeks": 6,
+    "nt_probnp": 4224,
+    "egfr": 41,
+    "potassium": 3.5,
+    "days_since_cardiac_event": 362,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": false,
+    "systolic_bp": 90,
+    "hemoglobin": 11.2,
+    "comorbidities": [
+      "dyslipidemia",
+      "hypertension"
+    ],
+    "medications": [
+      "enalapril",
+      "carvedilol",
+      "eplerenone"
+    ],
+    "eligible": false,
+    "notes": "Excluded: INC-02 fail: NYHA Class I; INC-03 fail: LVEF > 40%"
+  },
+  {
+    "id": "P032",
+    "name": "Raymond Jenkins",
+    "age": 33,
+    "sex": "M",
+    "nyha_class": "II",
+    "lvef_percent": 26,
+    "stable_gdmt_weeks": 3,
+    "nt_probnp": 956,
+    "egfr": 103,
+    "potassium": 4.9,
+    "days_since_cardiac_event": 283,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": false,
+    "systolic_bp": 113,
+    "hemoglobin": 8.9,
+    "comorbidities": [
+      "hypothyroidism",
+      "hypertension"
+    ],
+    "medications": [
+      "sacubitril_valsartan",
+      "metoprolol",
+      "eplerenone",
+      "empagliflozin"
+    ],
+    "eligible": false,
+    "notes": "Excluded: INC-04 fail: stable GDMT < 4 weeks; EXC-08: hemoglobin < 9.0"
+  },
+  {
+    "id": "P033",
+    "name": "Irene Caldwell",
+    "age": 26,
+    "sex": "F",
+    "nyha_class": "I",
+    "lvef_percent": 50,
+    "stable_gdmt_weeks": 13,
+    "nt_probnp": 2346,
+    "egfr": 13,
+    "potassium": 3.0,
+    "days_since_cardiac_event": 794,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": false,
+    "systolic_bp": 126,
+    "hemoglobin": 12.2,
+    "comorbidities": [
+      "hypertension",
+      "osteoporosis"
+    ],
+    "medications": [
+      "sacubitril_valsartan",
+      "metoprolol",
+      "eplerenone",
+      "empagliflozin"
+    ],
+    "eligible": false,
+    "notes": "Excluded: INC-02 fail: NYHA Class I; INC-03 fail: LVEF > 40%; EXC-01: eGFR < 20"
+  },
+  {
+    "id": "P034",
+    "name": "Dennis Carroll",
+    "age": 39,
+    "sex": "M",
+    "nyha_class": "I",
+    "lvef_percent": 33,
+    "stable_gdmt_weeks": 18,
+    "nt_probnp": 4606,
+    "egfr": 26,
+    "potassium": 4.5,
+    "days_since_cardiac_event": 47,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": false,
+    "systolic_bp": 171,
+    "hemoglobin": 16.2,
+    "comorbidities": [
+      "type_2_diabetes",
+      "hypertension"
+    ],
+    "medications": [
+      "sacubitril_valsartan",
+      "bisoprolol",
+      "empagliflozin",
+      "furosemide"
+    ],
+    "eligible": false,
+    "notes": "Excluded: INC-02 fail: NYHA Class I; EXC-03: cardiac event < 90 days"
+  },
+  {
+    "id": "P035",
+    "name": "Harold Vargas",
+    "age": 33,
+    "sex": "M",
+    "nyha_class": "III",
+    "lvef_percent": 59,
+    "stable_gdmt_weeks": 17,
+    "nt_probnp": 3409,
+    "egfr": 87,
+    "potassium": 5.6,
+    "days_since_cardiac_event": 952,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": false,
+    "systolic_bp": 172,
+    "hemoglobin": 14.7,
+    "comorbidities": [
+      "hypertension",
+      "osteoporosis"
+    ],
+    "medications": [
+      "sacubitril_valsartan",
+      "carvedilol",
+      "dapagliflozin",
+      "furosemide"
+    ],
+    "eligible": false,
+    "notes": "Excluded: INC-03 fail: LVEF > 40%; EXC-02: potassium > 5.5"
+  },
+  {
+    "id": "P036",
+    "name": "Kenneth Zimmerman",
+    "age": 72,
+    "sex": "M",
+    "nyha_class": "II",
+    "lvef_percent": 27,
+    "stable_gdmt_weeks": 5,
+    "nt_probnp": 5824,
+    "egfr": 21,
+    "potassium": 4.3,
+    "days_since_cardiac_event": 44,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": false,
+    "systolic_bp": 174,
+    "hemoglobin": 15.7,
+    "comorbidities": [
+      "CKD_stage_3b",
+      "anemia"
+    ],
+    "medications": [
+      "enalapril",
+      "carvedilol",
+      "eplerenone"
+    ],
+    "eligible": false,
+    "notes": "Excluded: EXC-03: cardiac event < 90 days"
+  },
+  {
+    "id": "P037",
+    "name": "Harold Abbott",
+    "age": 44,
+    "sex": "M",
+    "nyha_class": "IV",
+    "lvef_percent": 31,
+    "stable_gdmt_weeks": 8,
+    "nt_probnp": 648,
+    "egfr": 106,
+    "potassium": 4.0,
+    "days_since_cardiac_event": 661,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": false,
+    "systolic_bp": 177,
+    "hemoglobin": 12.1,
+    "comorbidities": [
+      "hypertension"
+    ],
+    "medications": [
+      "enalapril",
+      "metoprolol",
+      "spironolactone"
+    ],
+    "eligible": true,
+    "notes": "Meets all criteria"
+  },
+  {
+    "id": "P038",
+    "name": "Frances Stewart",
+    "age": 53,
+    "sex": "F",
+    "nyha_class": "I",
+    "lvef_percent": 16,
+    "stable_gdmt_weeks": 19,
+    "nt_probnp": 3639,
+    "egfr": 52,
+    "potassium": 5.5,
+    "days_since_cardiac_event": 326,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": false,
+    "systolic_bp": 143,
+    "hemoglobin": 8.8,
+    "comorbidities": [
+      "type_2_diabetes",
+      "hypertension"
+    ],
+    "medications": [
+      "valsartan",
+      "metoprolol",
+      "spironolactone"
+    ],
+    "eligible": false,
+    "notes": "Excluded: INC-02 fail: NYHA Class I; EXC-08: hemoglobin < 9.0"
+  },
+  {
+    "id": "P039",
+    "name": "Quentin Drake",
+    "age": 88,
+    "sex": "M",
+    "nyha_class": "II",
+    "lvef_percent": 33,
+    "stable_gdmt_weeks": 13,
+    "nt_probnp": 653,
+    "egfr": 93,
+    "potassium": 6.2,
+    "days_since_cardiac_event": 643,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": false,
+    "systolic_bp": 162,
+    "hemoglobin": 15.6,
+    "comorbidities": [
+      "atrial_fibrillation",
+      "CKD_stage_3a"
+    ],
+    "medications": [
+      "enalapril",
+      "carvedilol",
+      "eplerenone"
+    ],
+    "eligible": false,
+    "notes": "Excluded: INC-01 fail: age out of range; EXC-02: potassium > 5.5"
+  },
+  {
+    "id": "P040",
+    "name": "Katherine Morgan",
+    "age": 57,
+    "sex": "F",
+    "nyha_class": "II",
+    "lvef_percent": 22,
+    "stable_gdmt_weeks": 13,
+    "nt_probnp": 5527,
+    "egfr": 56,
+    "potassium": 5.4,
+    "days_since_cardiac_event": 929,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": false,
+    "systolic_bp": 176,
+    "hemoglobin": 7.0,
+    "comorbidities": [
+      "depression"
+    ],
+    "medications": [
+      "sacubitril_valsartan",
+      "carvedilol",
+      "furosemide"
+    ],
+    "eligible": false,
+    "notes": "Excluded: EXC-08: hemoglobin < 9.0"
+  },
+  {
+    "id": "P041",
+    "name": "Teresa Turner",
+    "age": 61,
+    "sex": "F",
+    "nyha_class": "IV",
+    "lvef_percent": 38,
+    "stable_gdmt_weeks": 14,
+    "nt_probnp": 5614,
+    "egfr": 35,
+    "potassium": 4.8,
+    "days_since_cardiac_event": 817,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": false,
+    "systolic_bp": 80,
+    "hemoglobin": 9.7,
+    "comorbidities": [
+      "type_2_diabetes",
+      "obesity",
+      "sleep_apnea"
+    ],
+    "medications": [
+      "sacubitril_valsartan",
+      "bisoprolol",
+      "empagliflozin",
+      "furosemide"
+    ],
+    "eligible": false,
+    "notes": "Excluded: EXC-07: SBP < 90"
+  },
+  {
+    "id": "P042",
+    "name": "Harold Vargas",
+    "age": 59,
+    "sex": "M",
+    "nyha_class": "II",
+    "lvef_percent": 22,
+    "stable_gdmt_weeks": 4,
+    "nt_probnp": 280,
+    "egfr": 13,
+    "potassium": 3.9,
+    "days_since_cardiac_event": 491,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": false,
+    "systolic_bp": 128,
+    "hemoglobin": 10.9,
+    "comorbidities": [
+      "COPD",
+      "hypertension"
+    ],
+    "medications": [
+      "sacubitril_valsartan",
+      "carvedilol",
+      "furosemide"
+    ],
+    "eligible": false,
+    "notes": "Excluded: INC-05 fail: NT-proBNP < 400; EXC-01: eGFR < 20"
+  },
+  {
+    "id": "P043",
+    "name": "Pauline Morgan",
+    "age": 51,
+    "sex": "F",
+    "nyha_class": "II",
+    "lvef_percent": 51,
+    "stable_gdmt_weeks": 22,
+    "nt_probnp": 125,
+    "egfr": 104,
+    "potassium": 6.0,
+    "days_since_cardiac_event": 911,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": false,
+    "systolic_bp": 159,
+    "hemoglobin": 11.9,
+    "comorbidities": [
+      "type_2_diabetes",
+      "hypertension"
+    ],
+    "medications": [
+      "sacubitril_valsartan",
+      "metoprolol",
+      "eplerenone",
+      "empagliflozin"
+    ],
+    "eligible": false,
+    "notes": "Excluded: INC-03 fail: LVEF > 40%; INC-05 fail: NT-proBNP < 400; EXC-02: potassium > 5.5"
+  },
+  {
+    "id": "P044",
+    "name": "Dennis Owens",
+    "age": 37,
+    "sex": "M",
+    "nyha_class": "IV",
+    "lvef_percent": 52,
+    "stable_gdmt_weeks": 16,
+    "nt_probnp": 4658,
+    "egfr": 84,
+    "potassium": 4.1,
+    "days_since_cardiac_event": 778,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": false,
+    "systolic_bp": 162,
+    "hemoglobin": 15.5,
+    "comorbidities": [
+      "hypertension",
+      "osteoporosis"
+    ],
+    "medications": [
+      "sacubitril_valsartan",
+      "metoprolol",
+      "eplerenone",
+      "empagliflozin"
+    ],
+    "eligible": false,
+    "notes": "Excluded: INC-03 fail: LVEF > 40%"
+  },
+  {
+    "id": "P045",
+    "name": "Frances Xavier",
+    "age": 80,
+    "sex": "F",
+    "nyha_class": "IV",
+    "lvef_percent": 26,
+    "stable_gdmt_weeks": 24,
+    "nt_probnp": 2105,
+    "egfr": 115,
+    "potassium": 5.2,
+    "days_since_cardiac_event": 789,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": false,
+    "systolic_bp": 126,
+    "hemoglobin": 7.7,
+    "comorbidities": [
+      "depression"
+    ],
+    "medications": [
+      "sacubitril_valsartan",
+      "carvedilol",
+      "furosemide"
+    ],
+    "eligible": false,
+    "notes": "Excluded: EXC-08: hemoglobin < 9.0"
+  },
+  {
+    "id": "P046",
+    "name": "Katherine Kennedy",
+    "age": 89,
+    "sex": "F",
+    "nyha_class": "I",
+    "lvef_percent": 18,
+    "stable_gdmt_weeks": 4,
+    "nt_probnp": 1974,
+    "egfr": 57,
+    "potassium": 5.4,
+    "days_since_cardiac_event": 728,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": false,
+    "systolic_bp": 129,
+    "hemoglobin": 10.9,
+    "comorbidities": [
+      "type_2_diabetes",
+      "CKD_stage_3a"
+    ],
+    "medications": [
+      "valsartan",
+      "metoprolol",
+      "spironolactone"
+    ],
+    "eligible": false,
+    "notes": "Excluded: INC-01 fail: age out of range; INC-02 fail: NYHA Class I"
+  },
+  {
+    "id": "P047",
+    "name": "Teresa Wallace",
+    "age": 22,
+    "sex": "F",
+    "nyha_class": "IV",
+    "lvef_percent": 40,
+    "stable_gdmt_weeks": 0,
+    "nt_probnp": 2961,
+    "egfr": 46,
+    "potassium": 5.6,
+    "days_since_cardiac_event": 878,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": false,
+    "systolic_bp": 164,
+    "hemoglobin": 12.2,
+    "comorbidities": [
+      "type_2_diabetes",
+      "obesity",
+      "sleep_apnea"
+    ],
+    "medications": [
+      "sacubitril_valsartan",
+      "carvedilol",
+      "furosemide"
+    ],
+    "eligible": false,
+    "notes": "Excluded: INC-04 fail: stable GDMT < 4 weeks; EXC-02: potassium > 5.5"
+  },
+  {
+    "id": "P048",
+    "name": "Helen Ingram",
+    "age": 75,
+    "sex": "F",
+    "nyha_class": "IV",
+    "lvef_percent": 11,
+    "stable_gdmt_weeks": 12,
+    "nt_probnp": 2833,
+    "egfr": 93,
+    "potassium": 5.4,
+    "days_since_cardiac_event": 419,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": false,
+    "systolic_bp": 149,
+    "hemoglobin": 12.1,
+    "comorbidities": [
+      "sleep_apnea",
+      "obesity"
+    ],
+    "medications": [
+      "ramipril",
+      "bisoprolol",
+      "furosemide"
+    ],
+    "eligible": true,
+    "notes": "Meets all criteria"
+  },
+  {
+    "id": "P049",
+    "name": "Calvin Underwood",
+    "age": 74,
+    "sex": "M",
+    "nyha_class": "II",
+    "lvef_percent": 39,
+    "stable_gdmt_weeks": 5,
+    "nt_probnp": 491,
+    "egfr": 41,
+    "potassium": 4.3,
+    "days_since_cardiac_event": 221,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": false,
+    "systolic_bp": 118,
+    "hemoglobin": 9.6,
+    "comorbidities": [
+      "hypertension",
+      "osteoporosis"
+    ],
+    "medications": [
+      "enalapril",
+      "carvedilol",
+      "eplerenone"
+    ],
+    "eligible": true,
+    "notes": "Meets all criteria"
+  },
+  {
+    "id": "P050",
+    "name": "Percy Abbott",
+    "age": 89,
+    "sex": "M",
+    "nyha_class": "I",
+    "lvef_percent": 32,
+    "stable_gdmt_weeks": 7,
+    "nt_probnp": 5405,
+    "egfr": 16,
+    "potassium": 5.7,
+    "days_since_cardiac_event": 672,
+    "active_malignancy": true,
+    "pregnancy_risk": false,
+    "drug_allergy": true,
+    "systolic_bp": 101,
+    "hemoglobin": 8.9,
+    "comorbidities": [
+      "hypertension"
+    ],
+    "medications": [
+      "ramipril",
+      "bisoprolol",
+      "furosemide"
+    ],
+    "eligible": false,
+    "notes": "Excluded: INC-01 fail: age out of range; INC-02 fail: NYHA Class I; EXC-01: eGFR < 20; EXC-02: potassium > 5.5; EXC-04: active malignancy; EXC-06: drug allergy; EXC-08: hemoglobin < 9.0"
+  },
+  {
+    "id": "P051",
+    "name": "Harold Elliott",
+    "age": 80,
+    "sex": "M",
+    "nyha_class": "I",
+    "lvef_percent": 46,
+    "stable_gdmt_weeks": 30,
+    "nt_probnp": 1865,
+    "egfr": 67,
+    "potassium": 5.4,
+    "days_since_cardiac_event": 790,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": false,
+    "systolic_bp": 165,
+    "hemoglobin": 13.8,
+    "comorbidities": [
+      "hypertension",
+      "obesity"
+    ],
+    "medications": [
+      "enalapril",
+      "carvedilol",
+      "eplerenone"
+    ],
+    "eligible": false,
+    "notes": "Excluded: INC-02 fail: NYHA Class I; INC-03 fail: LVEF > 40%"
+  },
+  {
+    "id": "P052",
+    "name": "Stanley Abbott",
+    "age": 59,
+    "sex": "M",
+    "nyha_class": "IV",
+    "lvef_percent": 35,
+    "stable_gdmt_weeks": 30,
+    "nt_probnp": 5937,
+    "egfr": 33,
+    "potassium": 3.3,
+    "days_since_cardiac_event": 712,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": false,
+    "systolic_bp": 159,
+    "hemoglobin": 14.3,
+    "comorbidities": [
+      "type_2_diabetes",
+      "obesity",
+      "sleep_apnea"
+    ],
+    "medications": [
+      "enalapril",
+      "metoprolol",
+      "spironolactone"
+    ],
+    "eligible": true,
+    "notes": "Meets all criteria"
+  },
+  {
+    "id": "P053",
+    "name": "Leonard Russell",
+    "age": 74,
+    "sex": "M",
+    "nyha_class": "III",
+    "lvef_percent": 14,
+    "stable_gdmt_weeks": 16,
+    "nt_probnp": 5384,
+    "egfr": 51,
+    "potassium": 3.0,
+    "days_since_cardiac_event": 435,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": false,
+    "systolic_bp": 116,
+    "hemoglobin": 13.0,
+    "comorbidities": [
+      "type_2_diabetes",
+      "PAD",
+      "hypertension"
+    ],
+    "medications": [
+      "losartan",
+      "bisoprolol",
+      "dapagliflozin"
+    ],
+    "eligible": true,
+    "notes": "Meets all criteria"
+  },
+  {
+    "id": "P054",
+    "name": "Frances Xavier",
+    "age": 86,
+    "sex": "F",
+    "nyha_class": "III",
+    "lvef_percent": 49,
+    "stable_gdmt_weeks": 25,
+    "nt_probnp": 4488,
+    "egfr": 107,
+    "potassium": 4.7,
+    "days_since_cardiac_event": 451,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": false,
+    "systolic_bp": 101,
+    "hemoglobin": 14.9,
+    "comorbidities": [
+      "CKD_stage_3a"
+    ],
+    "medications": [
+      "enalapril",
+      "carvedilol",
+      "eplerenone"
+    ],
+    "eligible": false,
+    "notes": "Excluded: INC-01 fail: age out of range; INC-03 fail: LVEF > 40%"
+  },
+  {
+    "id": "P055",
+    "name": "Helen Young",
+    "age": 79,
+    "sex": "F",
+    "nyha_class": "IV",
+    "lvef_percent": 31,
+    "stable_gdmt_weeks": 0,
+    "nt_probnp": 4129,
+    "egfr": 116,
+    "potassium": 4.1,
+    "days_since_cardiac_event": 504,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": false,
+    "systolic_bp": 146,
+    "hemoglobin": 13.7,
+    "comorbidities": [
+      "hypothyroidism",
+      "hypertension"
+    ],
+    "medications": [
+      "sacubitril_valsartan",
+      "metoprolol",
+      "eplerenone",
+      "empagliflozin"
+    ],
+    "eligible": false,
+    "notes": "Excluded: INC-04 fail: stable GDMT < 4 weeks"
+  },
+  {
+    "id": "P056",
+    "name": "Quentin Graham",
+    "age": 30,
+    "sex": "M",
+    "nyha_class": "II",
+    "lvef_percent": 56,
+    "stable_gdmt_weeks": 13,
+    "nt_probnp": 4082,
+    "egfr": 79,
+    "potassium": 5.7,
+    "days_since_cardiac_event": 712,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": false,
+    "systolic_bp": 127,
+    "hemoglobin": 14.5,
+    "comorbidities": [
+      "CKD_stage_3a"
+    ],
+    "medications": [
+      "enalapril",
+      "carvedilol",
+      "eplerenone"
+    ],
+    "eligible": false,
+    "notes": "Excluded: INC-03 fail: LVEF > 40%; EXC-02: potassium > 5.5"
+  },
+  {
+    "id": "P057",
+    "name": "Maurice Wallace",
+    "age": 51,
+    "sex": "M",
+    "nyha_class": "III",
+    "lvef_percent": 52,
+    "stable_gdmt_weeks": 18,
+    "nt_probnp": 3103,
+    "egfr": 68,
+    "potassium": 4.9,
+    "days_since_cardiac_event": 357,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": false,
+    "systolic_bp": 112,
+    "hemoglobin": 10.3,
+    "comorbidities": [
+      "type_2_diabetes",
+      "PAD",
+      "hypertension"
+    ],
+    "medications": [
+      "enalapril",
+      "carvedilol",
+      "eplerenone"
+    ],
+    "eligible": false,
+    "notes": "Excluded: INC-03 fail: LVEF > 40%"
+  },
+  {
+    "id": "P058",
+    "name": "Irene Hudson",
+    "age": 35,
+    "sex": "F",
+    "nyha_class": "II",
+    "lvef_percent": 30,
+    "stable_gdmt_weeks": 3,
+    "nt_probnp": 4469,
+    "egfr": 105,
+    "potassium": 5.4,
+    "days_since_cardiac_event": 201,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": false,
+    "systolic_bp": 167,
+    "hemoglobin": 12.0,
+    "comorbidities": [
+      "depression"
+    ],
+    "medications": [
+      "enalapril",
+      "metoprolol",
+      "spironolactone"
+    ],
+    "eligible": false,
+    "notes": "Excluded: INC-04 fail: stable GDMT < 4 weeks"
+  },
+  {
+    "id": "P059",
+    "name": "Jerome Hudson",
+    "age": 66,
+    "sex": "M",
+    "nyha_class": "II",
+    "lvef_percent": 29,
+    "stable_gdmt_weeks": 0,
+    "nt_probnp": 5880,
+    "egfr": 76,
+    "potassium": 3.4,
+    "days_since_cardiac_event": 51,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": false,
+    "systolic_bp": 159,
+    "hemoglobin": 16.0,
+    "comorbidities": [],
+    "medications": [
+      "enalapril",
+      "metoprolol",
+      "spironolactone"
+    ],
+    "eligible": false,
+    "notes": "Excluded: INC-04 fail: stable GDMT < 4 weeks; EXC-03: cardiac event < 90 days"
+  },
+  {
+    "id": "P060",
+    "name": "Stanley Jenkins",
+    "age": 80,
+    "sex": "M",
+    "nyha_class": "IV",
+    "lvef_percent": 38,
+    "stable_gdmt_weeks": 10,
+    "nt_probnp": 1590,
+    "egfr": 14,
+    "potassium": 3.9,
+    "days_since_cardiac_event": 887,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": false,
+    "systolic_bp": 121,
+    "hemoglobin": 11.7,
+    "comorbidities": [
+      "COPD",
+      "hypertension"
+    ],
+    "medications": [
+      "sacubitril_valsartan",
+      "carvedilol",
+      "dapagliflozin",
+      "furosemide"
+    ],
+    "eligible": false,
+    "notes": "Excluded: EXC-01: eGFR < 20"
+  },
+  {
+    "id": "P061",
+    "name": "Edwin Zimmerman",
+    "age": 58,
+    "sex": "M",
+    "nyha_class": "I",
+    "lvef_percent": 25,
+    "stable_gdmt_weeks": 3,
+    "nt_probnp": 4651,
+    "egfr": 105,
+    "potassium": 4.5,
+    "days_since_cardiac_event": 615,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": false,
+    "systolic_bp": 136,
+    "hemoglobin": 10.6,
+    "comorbidities": [
+      "type_2_diabetes",
+      "PAD",
+      "hypertension"
+    ],
+    "medications": [
+      "enalapril",
+      "carvedilol",
+      "eplerenone"
+    ],
+    "eligible": false,
+    "notes": "Excluded: INC-02 fail: NYHA Class I; INC-04 fail: stable GDMT < 4 weeks"
+  },
+  {
+    "id": "P062",
+    "name": "Joyce Stewart",
+    "age": 27,
+    "sex": "F",
+    "nyha_class": "I",
+    "lvef_percent": 58,
+    "stable_gdmt_weeks": 6,
+    "nt_probnp": 5204,
+    "egfr": 35,
+    "potassium": 3.9,
+    "days_since_cardiac_event": 88,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": true,
+    "systolic_bp": 70,
+    "hemoglobin": 10.9,
+    "comorbidities": [
+      "type_2_diabetes",
+      "obesity",
+      "sleep_apnea"
+    ],
+    "medications": [
+      "losartan",
+      "carvedilol",
+      "dapagliflozin",
+      "furosemide"
+    ],
+    "eligible": false,
+    "notes": "Excluded: INC-02 fail: NYHA Class I; INC-03 fail: LVEF > 40%; EXC-03: cardiac event < 90 days; EXC-06: drug allergy; EXC-07: SBP < 90"
+  },
+  {
+    "id": "P063",
+    "name": "Beatrice Hudson",
+    "age": 56,
+    "sex": "F",
+    "nyha_class": "III",
+    "lvef_percent": 54,
+    "stable_gdmt_weeks": 27,
+    "nt_probnp": 3799,
+    "egfr": 17,
+    "potassium": 5.4,
+    "days_since_cardiac_event": 951,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": false,
+    "systolic_bp": 172,
+    "hemoglobin": 15.9,
+    "comorbidities": [
+      "hypertension",
+      "osteoporosis"
+    ],
+    "medications": [
+      "enalapril",
+      "metoprolol",
+      "spironolactone"
+    ],
+    "eligible": false,
+    "notes": "Excluded: INC-03 fail: LVEF > 40%; EXC-01: eGFR < 20"
+  },
+  {
+    "id": "P064",
+    "name": "Edwin Drake",
+    "age": 54,
+    "sex": "M",
+    "nyha_class": "II",
+    "lvef_percent": 14,
+    "stable_gdmt_weeks": 1,
+    "nt_probnp": 1439,
+    "egfr": 109,
+    "potassium": 4.1,
+    "days_since_cardiac_event": 771,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": false,
+    "systolic_bp": 126,
+    "hemoglobin": 8.2,
+    "comorbidities": [
+      "depression"
+    ],
+    "medications": [
+      "valsartan",
+      "metoprolol",
+      "spironolactone"
+    ],
+    "eligible": false,
+    "notes": "Excluded: INC-04 fail: stable GDMT < 4 weeks; EXC-08: hemoglobin < 9.0"
+  },
+  {
+    "id": "P065",
+    "name": "Rachel Russell",
+    "age": 83,
+    "sex": "F",
+    "nyha_class": "IV",
+    "lvef_percent": 15,
+    "stable_gdmt_weeks": 19,
+    "nt_probnp": 406,
+    "egfr": 63,
+    "potassium": 5.6,
+    "days_since_cardiac_event": 623,
+    "active_malignancy": false,
+    "pregnancy_risk": true,
+    "drug_allergy": false,
+    "systolic_bp": 177,
+    "hemoglobin": 15.2,
+    "comorbidities": [
+      "COPD",
+      "hypertension"
+    ],
+    "medications": [
+      "sacubitril_valsartan",
+      "carvedilol",
+      "dapagliflozin",
+      "furosemide"
+    ],
+    "eligible": false,
+    "notes": "Excluded: INC-01 fail: age out of range; EXC-02: potassium > 5.5; EXC-05: pregnancy risk"
+  },
+  {
+    "id": "P066",
+    "name": "Teresa Bishop",
+    "age": 42,
+    "sex": "F",
+    "nyha_class": "IV",
+    "lvef_percent": 43,
+    "stable_gdmt_weeks": 20,
+    "nt_probnp": 3702,
+    "egfr": 43,
+    "potassium": 3.6,
+    "days_since_cardiac_event": 604,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": false,
+    "systolic_bp": 130,
+    "hemoglobin": 10.3,
+    "comorbidities": [
+      "hypertension",
+      "gout"
+    ],
+    "medications": [
+      "sacubitril_valsartan",
+      "bisoprolol",
+      "empagliflozin",
+      "furosemide"
+    ],
+    "eligible": false,
+    "notes": "Excluded: INC-03 fail: LVEF > 40%"
+  },
+  {
+    "id": "P067",
+    "name": "Floyd Kennedy",
+    "age": 72,
+    "sex": "M",
+    "nyha_class": "IV",
+    "lvef_percent": 28,
+    "stable_gdmt_weeks": 21,
+    "nt_probnp": 3360,
+    "egfr": 112,
+    "potassium": 5.7,
+    "days_since_cardiac_event": 42,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": false,
+    "systolic_bp": 111,
+    "hemoglobin": 8.1,
+    "comorbidities": [
+      "sleep_apnea",
+      "obesity"
+    ],
+    "medications": [
+      "sacubitril_valsartan",
+      "metoprolol",
+      "eplerenone",
+      "empagliflozin"
+    ],
+    "eligible": false,
+    "notes": "Excluded: EXC-02: potassium > 5.5; EXC-03: cardiac event < 90 days; EXC-08: hemoglobin < 9.0"
+  },
+  {
+    "id": "P068",
+    "name": "Raymond Owens",
+    "age": 72,
+    "sex": "M",
+    "nyha_class": "I",
+    "lvef_percent": 22,
+    "stable_gdmt_weeks": 16,
+    "nt_probnp": 3043,
+    "egfr": 87,
+    "potassium": 5.6,
+    "days_since_cardiac_event": 645,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": true,
+    "systolic_bp": 104,
+    "hemoglobin": 12.2,
+    "comorbidities": [
+      "depression"
+    ],
+    "medications": [
+      "losartan",
+      "carvedilol",
+      "dapagliflozin",
+      "furosemide"
+    ],
+    "eligible": false,
+    "notes": "Excluded: INC-02 fail: NYHA Class I; EXC-02: potassium > 5.5; EXC-06: drug allergy"
+  },
+  {
+    "id": "P069",
+    "name": "Diane Abbott",
+    "age": 50,
+    "sex": "F",
+    "nyha_class": "II",
+    "lvef_percent": 29,
+    "stable_gdmt_weeks": 17,
+    "nt_probnp": 192,
+    "egfr": 78,
+    "potassium": 4.4,
+    "days_since_cardiac_event": 235,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": false,
+    "systolic_bp": 85,
+    "hemoglobin": 13.2,
+    "comorbidities": [
+      "COPD"
+    ],
+    "medications": [
+      "losartan",
+      "carvedilol",
+      "dapagliflozin",
+      "furosemide"
+    ],
+    "eligible": false,
+    "notes": "Excluded: INC-05 fail: NT-proBNP < 400; EXC-07: SBP < 90"
+  },
+  {
+    "id": "P070",
+    "name": "Rachel Wallace",
+    "age": 54,
+    "sex": "F",
+    "nyha_class": "IV",
+    "lvef_percent": 40,
+    "stable_gdmt_weeks": 15,
+    "nt_probnp": 2076,
+    "egfr": 66,
+    "potassium": 4.9,
+    "days_since_cardiac_event": 397,
+    "active_malignancy": false,
+    "pregnancy_risk": false,
+    "drug_allergy": false,
+    "systolic_bp": 87,
+    "hemoglobin": 15.2,
+    "comorbidities": [
+      "hypothyroidism",
+      "hypertension"
+    ],
+    "medications": [
+      "valsartan",
+      "metoprolol",
+      "spironolactone"
+    ],
+    "eligible": false,
+    "notes": "Excluded: EXC-07: SBP < 90"
+  }
 ]

@@ -28,30 +28,44 @@ load_dotenv()
 
 from openai import OpenAI
 
-client = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama")
+api_key = os.environ.get("GEMINI_API_KEY")
+client = OpenAI(
+    api_key=api_key if api_key else "missing_key",
+    base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
+)
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 DATA_DIR.mkdir(exist_ok=True)
 
 
+import time
+
 def generate(prompt: str) -> dict | list:
-    """Generate JSON data from Ollama."""
+    """Generate JSON data from Gemini via OpenAI SDK."""
     try:
+        # Give a small 4-second delay before making requests since Gemini Free Tier is 15 RPM
+        time.sleep(4)
         response = client.chat.completions.create(
-            model="llama3.1:8b",   # use 8B for better JSON quality
+            model="gemini-2.0-flash",  # Reverted to 2.0-flash (1.5-flash returned 404 on OpenAI layer)
             messages=[{"role": "user", "content": prompt}],
             temperature=0.7,
             response_format={"type": "json_object"}
         )
         return json.loads(response.choices[0].message.content)
     except Exception as e:
-        print(f"  ❌ Failed to generate: {e}")
+        print(f"  [ERROR] Failed to generate: {e}")
+        if "429" in str(e) and "limit: 0" in str(e):
+            print("\n  [!] CRITICAL QUOTA ERROR: Your Google account has exactly 0 free limit.")
+            print("  This typically happens if you reside in the UK/EU/Switzerland where Google disables the Free Tier.")
+            print("  To fix: You must set up a GCP Billing Account with a credit card, OR use a VPN/US account,")
+            print("          OR switch back to a local model like Ollama.")
         raise
+
 
 
 def generate_patients(count: int = 50):
     """Generate patient records for eligibility screening."""
-    print(f"🏥 Generating {count} patient records...")
+    print(f"[GEN] Generating {count} patient records...")
     prompt = f"""Generate exactly {count} realistic patient records for a heart failure clinical trial (CARDIO-SHIELD Phase III).
 
 Each patient must have these fields:
@@ -85,12 +99,12 @@ Return as a JSON array."""
     patients = generate(prompt)
     with open(DATA_DIR / "patients.json", "w", encoding="utf-8") as f:
         json.dump(patients, f, indent=2)
-    print(f"  ✅ Saved {len(patients)} patients")
+    print(f"  [OK] Saved {len(patients)} patients")
 
 
 def generate_adverse_events(count: int = 40):
     """Generate adverse event reports."""
-    print(f"⚠️  Generating {count} adverse event reports...")
+    print(f"[GEN] Generating {count} adverse event reports...")
     prompt = f"""Generate exactly {count} realistic adverse event reports for a clinical trial.
 
 Each AE must have these fields:
@@ -122,12 +136,12 @@ Mix of all urgency levels. Return as a JSON array."""
     aes = generate(prompt)
     with open(DATA_DIR / "adverse_events.json", "w", encoding="utf-8") as f:
         json.dump(aes, f, indent=2)
-    print(f"  ✅ Saved {len(aes)} adverse events")
+    print(f"  [OK] Saved {len(aes)} adverse events")
 
 
 def generate_deviations(count: int = 30):
     """Generate protocol deviation reports."""
-    print(f"📋 Generating {count} protocol deviations...")
+    print(f"[GEN] Generating {count} protocol deviations...")
     prompt = f"""Generate exactly {count} realistic protocol deviation reports for a clinical trial.
 
 Each deviation must have these fields:
@@ -152,22 +166,27 @@ Mix of minor/major/critical. Return as a JSON array."""
     devs = generate(prompt)
     with open(DATA_DIR / "deviations.json", "w", encoding="utf-8") as f:
         json.dump(devs, f, indent=2)
-    print(f"  ✅ Saved {len(devs)} deviations")
+    print(f"  [OK] Saved {len(devs)} deviations")
 
 
 def main():
-    print("🔬 ClinicalTrialEnv Data Generator")
+    print("[APP] ClinicalTrialEnv Data Generator")
     print("=" * 40)
-    print(f"Using Ollama llama3.1:8b")
+    print(f"Using Gemini via OpenAI API (gemini-2.0-flash)")
     print(f"Output: {DATA_DIR}")
     print()
 
-    generate_patients(50)
-    generate_adverse_events(40)
-    generate_deviations(30)
+    if not os.environ.get("GEMINI_API_KEY"):
+        print("[ERROR] GEMINI_API_KEY environment variable is missing.")
+        print("Please provide a valid API key in .env")
+        return
+
+    generate_patients(20)
+    generate_adverse_events(20)
+    generate_deviations(20)
 
     print()
-    print("✅ All data generated successfully!")
+    print("[OK] All data generated successfully!")
     print("   You can now start the server with: uvicorn server.app:app --port 7860")
 
 

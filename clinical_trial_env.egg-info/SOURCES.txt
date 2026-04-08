@@ -14,5 +14,6 @@ server/app.py
 server/environment.py
 server/graders/__init__.py
 server/graders/adverse_event.py
+server/graders/confidence.py
 server/graders/deviation.py
 server/graders/eligibility.py
