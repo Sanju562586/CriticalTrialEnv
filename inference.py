@@ -2,15 +2,15 @@
 Inference Script — ClinicalTrialEnv
 ====================================
 MANDATORY env vars (loaded from .env or shell):
-    API_BASE_URL     LLM endpoint  (default: http://localhost:11434/v1)
-    MODEL_NAME       LLM model id  (default: llama3.2:latest)
-    HF_TOKEN         API key       (default: ollama)
+    API_BASE_URL     LLM endpoint  (default: https://router.huggingface.co/v1)
+    MODEL_NAME       LLM model id  (default: meta-llama/Llama-3.3-70B-Instruct)
+    HF_TOKEN         Your Hugging Face API key
     ENV_BASE_URL     Env server    (default: http://localhost:7860)
 
-STDOUT FORMAT (required):
-    [START] task=<task> env=<env> model=<model>
+STDOUT FORMAT (required by OpenEnv submission spec):
+    [START] task=<task> env=<benchmark> model=<model>
     [STEP]  step=<n> action=<str> reward=<0.00> done=<true|false> error=<msg|null>
-    [END]   success=<true|false> steps=<n> rewards=<r1,r2,...>
+    [END]   success=<true|false> steps=<n> score=<score> rewards=<r1,r2,...,rn>
 """
 
 import json
@@ -27,8 +27,8 @@ from clinical_trial_env.client import ClinicalTrialEnv
 load_dotenv()
 
 # ── Config ────────────────────────────────────────────────────────────────────
-API_BASE_URL = os.getenv("API_BASE_URL", "http://localhost:11434/v1")
-MODEL_NAME   = os.getenv("MODEL_NAME",   "llama3.2:latest")
+API_BASE_URL = os.getenv("API_BASE_URL", "https://router.huggingface.co/v1")
+MODEL_NAME   = os.getenv("MODEL_NAME",   "meta-llama/Llama-3.3-70B-Instruct")
 HF_TOKEN     = os.getenv("HF_TOKEN",     "ollama")
 ENV_BASE_URL = os.getenv("ENV_BASE_URL", "http://localhost:7860")
 BENCHMARK    = "ClinicalTrialEnv"
@@ -62,10 +62,11 @@ def log_step(step: int, action: dict, reward: float, done: bool,
     )
 
 
-def log_end(success: bool, steps: int, rewards: List[float]) -> None:
+def log_end(success: bool, steps: int, score: float, rewards: List[float]) -> None:
     rewards_str = ",".join(f"{r:.2f}" for r in rewards)
     print(
-        f"[END] success={str(success).lower()} steps={steps} rewards={rewards_str}",
+        f"[END] success={str(success).lower()} steps={steps} "
+        f"score={score:.2f} rewards={rewards_str}",
         flush=True,
     )
 
@@ -607,14 +608,16 @@ def run_task(env, task: str) -> List[float]:
                 break
 
         avg = sum(rewards) / max(len(rewards), 1)
-        success = avg >= SUCCESS_THRESHOLD
+        score = min(max(avg, 0.0), 1.0)   # clamp to [0, 1] as required
+        success = score >= SUCCESS_THRESHOLD
 
     except Exception as e:
         error_msg = str(e)
+        score = 0.0
         success = False
 
     finally:
-        log_end(success=success, steps=steps_taken, rewards=rewards)
+        log_end(success=success, steps=steps_taken, score=score, rewards=rewards)
 
     return rewards
 

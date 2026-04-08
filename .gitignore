@@ -18,3 +18,12 @@ Thumbs.db
 
 # Docker
 *.log
+
+# Build artifacts (do not commit)
+*.egg-info/
+clinical_trial_env.egg-info/
+dist/
+build/
+
+# uv lock file (pin versions locally, not needed by evaluators)
+uv.lock

@@ -6,15 +6,36 @@ description: >
   and protocol deviation assessment — grounded in FDA 21 CFR 312.32
   and ICH E6 GCP guidelines.
 
+author: Sanju562586
+repository: https://github.com/Sanju562586/CriticalTrialEnv
+tags:
+  - clinical-trials
+  - healthcare
+  - reinforcement-learning
+  - FDA
+  - GCP
+  - pytorch
+  - openenv
+
+sdk: openenv-core>=0.2.0
+entry_point: "uvicorn server.app:app --host 0.0.0.0 --port 7860"
+inference_script: inference.py
+
 tasks:
   - id: eligibility_screening
     description: Screen patient records against trial inclusion/exclusion criteria
     difficulty: easy
+    reward_range: [0.0, 1.0]
+    max_steps: 50
 
   - id: adverse_event_triage
     description: Rank adverse event reports by FDA reporting urgency
     difficulty: medium
+    reward_range: [0.0, 1.0]
+    max_steps: 30
 
   - id: deviation_assessment
     description: Classify and respond to protocol deviations per ICH E6 GCP
     difficulty: hard
+    reward_range: [0.0, 1.0]
+    max_steps: 30
