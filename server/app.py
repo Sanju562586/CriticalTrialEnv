@@ -89,7 +89,9 @@ async def get_tasks():
 
 
 @app.post("/reset")
-async def reset(request: ResetRequest):
+async def reset(request: Optional[ResetRequest] = None):
+    if request is None:
+        request = ResetRequest()
     result = env.reset(task=request.task)
     return {
         "observation": _to_dict(result.observation),
@@ -98,7 +100,9 @@ async def reset(request: ResetRequest):
 
 
 @app.post("/step")
-async def step(request: ActionRequest):
+async def step(request: Optional[ActionRequest] = None):
+    if request is None:
+        request = ActionRequest()
     action_dict = request.model_dump()
     result = env.step(action_dict)
     return {
