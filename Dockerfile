@@ -4,12 +4,19 @@ FROM ${BASE_IMAGE}
 
 WORKDIR /app
 
-# Install server dependencies
-COPY server/requirements.txt /tmp/requirements.txt
-RUN pip install --no-cache-dir -r /tmp/requirements.txt
+# Install CPU-only PyTorch first (avoids 2GB GPU wheel download on HF Spaces)
+RUN pip install --no-cache-dir \
+    torch --index-url https://download.pytorch.org/whl/cpu
+
+# Copy dependency files and install all project deps
+COPY pyproject.toml requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the entire project
 COPY . .
+
+# Install the local package in editable mode
+RUN pip install --no-cache-dir -e . --no-deps
 
 # Expose the HF Spaces default port
 EXPOSE 7860
